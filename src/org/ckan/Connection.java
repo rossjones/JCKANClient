@@ -25,6 +25,7 @@ public final class Connection {
     private String m_host;
     private int m_port;
     private String _apikey = null;
+    private String m_root_path_item = null;
 
     public Connection(  ) {
         this("http://datahub.io", 80);
@@ -44,6 +45,19 @@ public final class Connection {
             System.out.println(mue);
         }
 
+    }
+
+    /**
+    * If your CKAN instance is not hosted at the root of the webserver,
+    * then you may need to set the root folder.  If your CKAN instance is
+    * accessible via http://.../data/ then you should call
+    *
+    *       setRootFolder("data");
+    *
+    * Untested.
+    **/
+    public void setRootFolder( String folderName ) {
+        this.m_root_path_item = folderName;
     }
 
     public void setApiKey( String key ) {
@@ -66,8 +80,13 @@ public final class Connection {
         throws CKANException {
         URL url = null;
 
+        String p = path;
+        if (this.m_root_path_item != null) {
+            p = "/" + this.m_root_path_item + path;
+        }
+
         try {
-            url = new URL( this.m_host + ":" + this.m_port + path);
+            url = new URL( this.m_host + ":" + this.m_port + p);
         } catch ( MalformedURLException mue ) {
             System.err.println(mue);
             return null;

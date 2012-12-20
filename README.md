@@ -1,3 +1,5 @@
+ckan-service-prototype
+
 JCKANClient
 ====
 

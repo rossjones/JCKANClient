@@ -22,8 +22,8 @@ public class GetTestCases {
 
     @Test
     public void test_GetDataset() {
-        Client c = new Client( new Connection("http://localhost", 5000),
-                               GetTestCases.ApiKey);
+        Connection conn = new Connection("http://localhost", 5000);
+        Client c = new Client( conn, GetTestCases.ApiKey );
         try {
             Dataset ds = new Dataset();
             ds.setName( UUID.randomUUID().toString() );
