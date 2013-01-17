@@ -19,7 +19,7 @@
   <target name="deps">
     <mkdir dir="${lib}"/>
 
-    <get src="http://apache.mirrors.timporter.net//httpcomponents/httpclient/binary/httpcomponents-client-4.1.3-bin.zip"
+    <get src="http://archive.apache.org/dist/httpcomponents/httpclient/binary/httpcomponents-client-4.1.3-bin.zip"
         dest="${lib}/httpcomponents-client-4.1.3-bin.zip"
         verbose="true"
         usetimestamp="true"/>
